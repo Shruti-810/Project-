@@ -1,0 +1,113 @@
+
+
+marquee{
+    margin-top: 2mm;
+    color:blueviolet;
+    margin-bottom: 0;
+}
+
+.nav h4
+{
+    color: white;
+   
+}
+
+.nav
+{
+    margin-top: 0%;
+    background-color: black;
+}
+
+.nav a{
+    float: right;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    text-decoration: none;
+    list-style-type: none;
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.nav li{
+    display: inline;
+    padding: 10px;
+  
+}
+.nav label
+{
+    margin:auto;
+    text-align: center;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 10%;
+    margin-top: auto;
+    padding-bottom: 0%;
+    color: white;
+}
+
+.nav a:hover
+{
+    border-right: white;
+    background-color: lightslategray;
+    color: white;
+}
+.nav a:active
+{
+    color: black;
+}
+.nav ul{
+   
+    padding: 0%;
+    display: block;
+   overflow: hidden;
+   margin-right: 10%;
+}
+
+
+.form 
+{
+    display: block;
+    margin-top:8%;
+    text-align: center;
+    display: block;
+    padding-bottom: 1%;
+}
+
+.form input[type="text"]
+{
+    width:100%;
+}
+
+.form input[type="password"]
+{
+    width:100%;
+}
+
+.form input[type="submit"]
+{
+    width:100%;
+    background-color: black;
+    color:white;
+    font-weight: bold;
+    padding:4px;
+}
+
+.form label
+{
+    text-align: left;
+    display: block;
+}
+
+fieldset{
+    background-color: white;
+    padding: 3%;
+    margin-left: 30%;
+    margin-right:30%;
+    border-style: outset;
+    border : solid blanchedalmond 6px;
+    box-sizing: border-box;
+    box-shadow: blanchedalmond;
+}
+
