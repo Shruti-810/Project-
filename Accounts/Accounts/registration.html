@@ -11,8 +11,8 @@
     <body style="background-color: thistle;">
         <h1><marquee>Register Here..</marquee></h1>
         <div class="form">
-        <form action="register" method="post"> 
-            
+        <form action="registration" method="post"> 
+            {% csrf_token %}
             <fieldset>
             <label><b>Name</b></label>
             <input type="text" placeholder="Enter Your Name" name="uname"></br></br>

@@ -55,7 +55,8 @@ ROOT_URLCONF = 'Online_Shoping_For_Accessories.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\Accounts\Accounts'],
+        'DIRS': [r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\Accounts\Accounts',
+        r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

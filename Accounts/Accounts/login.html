@@ -9,7 +9,8 @@
     <body style="background-color: lightcyan;">
         <h2><marquee>Login Here</marquee></h2>
         <div class="form">
-            <form method="post"> 
+            <form action="login" method="post"> 
+                {% csrf_token %}
                 <fieldset>
                 
                 <label><b>Email ID</b></label>
