@@ -15,6 +15,10 @@ class register(models.Model):
     #     self.email_id=email_id
     #     self.password=password
     #     self.cpassword=cpassword
+    def login_id(self):
+        return self.email_id
+    def login_pass(self):
+        return self.password
 
 
 
