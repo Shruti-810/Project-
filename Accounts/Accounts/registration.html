@@ -1,8 +1,8 @@
-{% load static %}
+
 <html>
     <head>
-        
-        <link rel="stylesheet" type="text/css" href="{% static 'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\static\css\style.css'%}">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static '..\static\css\style.css'%}">
         <title>
             Register Yourself
         </title>
@@ -27,7 +27,7 @@
             <input type="submit" value="CREATE" name="sub">
         </fieldset>
         </form>  
-    </div>
+        </div>
    
     </body>
 </html>

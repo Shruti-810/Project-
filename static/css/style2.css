@@ -1,0 +1,34 @@
+body{
+    margin: 0%;
+    background-color: whitesmoke;
+}
+.head
+{
+    margin: 0%;
+    background-color: orange;
+}
+
+
+.foot
+{
+    margin: 0%;
+    padding: 0%;
+    background-color: palegoldenrod;
+}
+
+.div
+{
+    background-color: tomato;
+}
+
+
+.div1
+{
+    /* float: left; */
+    margin: 3%;
+}
+
+img
+{
+    margin: 3%;
+}

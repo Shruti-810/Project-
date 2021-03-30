@@ -3,6 +3,7 @@ from django.contrib.auth.models import User,auth
 from .models import register
 from django.http import HttpResponse
 from django.contrib import messages
+
 # Create your views here.
 
 
@@ -16,8 +17,19 @@ def creation(request):
         number=request.POST['no']
         password=request.POST['pass']
         cpass=request.POST['cpass']
+
+        if User.objects.filter(username=name).exists():
+            return HttpResponse("<h1>User Already Exists</h1>")
+        if User.objects.filter(email=email_id).exists():
+            return HttpResponse("<h1>User Already Exists</h1>")
+        if password!=cpass:
+            return HttpResponse("<h1>Enter Password Again</h1>")
+            
         info=register(name=name,phone_no=number,email_id=email_id,password=password,cpassword=cpass)
         info.save()
+        info1=User.objects.create_user(username=name,password=password,email=email_id)
+        info1.save()
+       
         print("User Created")
         return render(request, r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\templates\home.html')
     else:
@@ -25,8 +37,13 @@ def creation(request):
    
 def login(request):
     if request.method=='POST':
-        email=request.POST['id']
-        password=request.POST['pass']
-        return render(request, r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\templates\home.html')
+        user_login=request.POST['name']
+        password_login=request.POST['pass_login']
+        user=auth.authenticate(username=user_login,password=password_login)
+        if user is not None:
+            auth.login(request,user)
+            return render(request,r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\templates\home.html')
+        else:
+            return HttpResponse("<h1>Invalid User</h1>")
     else:
         return render(request,'login.html')

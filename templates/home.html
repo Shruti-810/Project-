@@ -1,8 +1,8 @@
-{%load admin_urls%}
+{% load static %}
 <html>
     <head>
         {% load static %}
-        <link rel="stylesheet" type="text/css" href="{% static 'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\static\css\style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static '..\static\css\style.css' %}">
         <title>
             Shopessories
         </title>
@@ -14,15 +14,17 @@
       <ul class="ul-tag">
           <label>FREE SHIPPING</label>
           <label>ORDER NOW</label>
+          <li><a href="/product">Products</a></li>
           <li><a href="">Wish-List</a></li>
           <li><a href="">My Cart</a></li>
           <li><a href="/login">Login</a></li>
           <li><a href="/registration">Registration</a></li>
       </ul>
 
-      </div>
+      <!-- </div>
       <div class="choose">
+          <img src={% static 'images/pic1.jpg' %} width="600" height="800">
 
-      </div>
+      </div> -->
     </body>
 </html>

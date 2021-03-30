@@ -14,7 +14,7 @@ from pathlib import Path,os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-#print(BASE_DIR)
+print(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'Accounts.apps.AccountsConfig',
-    'Products',
+    'Products.apps.ProductsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,7 +57,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\Accounts\Accounts',
-        r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\templates'],
+                 r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\templates',
+                 r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\Products\Products'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
