@@ -14,12 +14,16 @@
       <ul class="ul-tag">
           <label>FREE SHIPPING</label>
           <label>ORDER NOW</label>
-          <li><a href="/product">Products</a></li>
+          <li><a href="{%url 'home-page' %}">Products</a></li>
           <li><a href="">Wish-List</a></li>
-          <li><a href="/cart">My Cart</a></li>
-          <li><a href="/login">Login</a></li>
-          <li><a href="/registration">Registration</a></li>
+          <li><a href="{%url 'cart' %}">My Cart</a></li>
+          <li><a href="{%url 'login_page' %}">Login</a></li>
+          <li><a href="{%url 'register_page' %}">Registration</a></li>
           </ul>
+          <p></p>
+        <p>
+        <img src = "{% static 'static/images/1.jpg' %}", width=300px>
+           </p>
 
       <!-- </div>
       <div class="choose">
@@ -28,3 +32,5 @@
       </div> -->
     </body>
 </html>
+
+ 

@@ -8,7 +8,7 @@ from django.contrib import messages
 
 
 def home(request):
-    return render(request,r'C:\Users\vrush\Downloads\Online_Shopping_For_Accessories-Project\Online_Shopping_For_Accessories-Project\templates\home.html')
+    return render(request,"home.html")
 
 def creation(request):
     if request.method=='POST':
@@ -31,9 +31,9 @@ def creation(request):
         info1.save()
        
         print("User Created")
-        return render(request, r'C:\Users\vrush\Downloads\Online_Shopping_For_Accessories-Project\Online_Shopping_For_Accessories-Project\templates')
+        return render(request, "login.html")
     else:
-        return render(request, r'C:\Users\vrush\Downloads\Online_Shopping_For_Accessories-Project\Online_Shopping_For_Accessories-Project\Accounts\Accounts')
+        return render(request, "login.html")
    
 def login(request):
     if request.method=='POST':
@@ -42,7 +42,7 @@ def login(request):
         user=auth.authenticate(username=user_login,password=password_login)
         if user is not None:
             auth.login(request,user)
-            return render(request,r'C:\Users\vrush\Downloads\Online_Shopping_For_Accessories-Project\Online_Shopping_For_Accessories-Project\templates')
+            return render(request,"home.html")
         else:
             return HttpResponse("<h1>Invalid User</h1>")
     else:
