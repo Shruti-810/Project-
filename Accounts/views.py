@@ -2,13 +2,14 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from .models import register
 from django.http import HttpResponse
-from django.contrib import messages
 
 # Create your views here.
-
-
 def home(request):
+<<<<<<< HEAD
     return render(request,"home.html")
+=======
+    return render(request, "home.html")
+>>>>>>> f2a33607885894e69f17c1a48df8467e53d0ce72
 
 def creation(request):
     if request.method=='POST':
@@ -33,7 +34,11 @@ def creation(request):
         print("User Created")
         return render(request, "login.html")
     else:
+<<<<<<< HEAD
         return render(request, "login.html")
+=======
+        return render(request, "registration.html")
+>>>>>>> f2a33607885894e69f17c1a48df8467e53d0ce72
    
 def login(request):
     if request.method=='POST':
@@ -44,6 +49,6 @@ def login(request):
             auth.login(request,user)
             return render(request,"home.html")
         else:
-            return HttpResponse("<h1>Invalid User</h1>")
+            return render(request,'login.html')
     else:
         return render(request,'login.html')
