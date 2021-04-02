@@ -5,7 +5,11 @@ from django.http import HttpResponse
 
 # Create your views here.
 def home(request):
+<<<<<<< HEAD
+    return render(request,"home.html")
+=======
     return render(request, "home.html")
+>>>>>>> f2a33607885894e69f17c1a48df8467e53d0ce72
 
 def creation(request):
     if request.method=='POST':
@@ -30,7 +34,11 @@ def creation(request):
         print("User Created")
         return render(request, "login.html")
     else:
+<<<<<<< HEAD
+        return render(request, "login.html")
+=======
         return render(request, "registration.html")
+>>>>>>> f2a33607885894e69f17c1a48df8467e53d0ce72
    
 def login(request):
     if request.method=='POST':

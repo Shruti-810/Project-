@@ -1,40 +1,33 @@
-{% load static %}
 
-<head>
-    <link rel="stylesheet" type="text/css" href="{% static '..\static\css\style.css'%}">
-    <title>
-        Register Yourself
-    </title>
-
-</head>
-
-<body style="background-color: thistle;">
-    <h1>
-        <marquee>Register Here..</marquee>
-    </h1>
-    <div class="form">
-        <form action="{% url 'register_page' %}" method="POSt">
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static '..\static\css\style.css'%}">
+        <title>
+            Register Yourself
+        </title>
+        
+    </head>
+    <body style="background-color: thistle;">
+        <h1><marquee>Register Here..</marquee></h1>
+        <div class="form">
+        <form action="registration" method="post"> 
             {% csrf_token %}
             <fieldset>
-                <label><b>Name</b></label>
-                <input type="text" placeholder="Enter Your Name" name="uname"></br>
-                </br>
-                <label><b>Email ID</b></label>
-                <input type="text" placeholder="Enter Your Email ID" name="id"></br>
-                </br>
-                <label><b>Phone No.</b></label>
-                <input type="text" placeholder="Enter Your Number" name="no"></br>
-                </br>
-                <label><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="pass"></br>
-                </br>
-                <label><b>Confirm Password</b></label>
-                <input type="password" placeholder="ReEnter Password" name="cpass"></br>
-                </br>
-                <input type="submit" value="CREATE" name="sub">
-
-            </fieldset>
-        </form>
-    </div>
-
-</body>
+            <label><b>Name</b></label>
+            <input type="text" placeholder="Enter Your Name" name="uname"></br></br>
+            <label><b>Email ID</b></label>
+            <input type="text" placeholder="Enter Your Email ID" name="id"></br></br>
+            <label><b>Phone No.</b></label>
+            <input type="text" placeholder="Enter Your Number" name="no"></br></br>
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="pass"></br></br>
+            <label><b>Confirm Password</b></label>
+            <input type="password" placeholder="ReEnter Password" name="cpass"></br></br>
+            <input type="submit" value="CREATE" name="sub">
+        </fieldset>
+        </form>  
+        </div>
+   
+    </body>
+</html>
