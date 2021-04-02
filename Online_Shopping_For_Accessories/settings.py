@@ -32,14 +32,13 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'Accounts.apps.AccountsConfig',
+    'Products.apps.ProductsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'shop'
-    
 ]
 
 MIDDLEWARE = [
@@ -57,9 +56,9 @@ ROOT_URLCONF = 'Online_Shoping_For_Accessories.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'C:\Users\vrush\Downloads\Online_Shopping_For_Accessories-Project\Online_Shopping_For_Accessories-Project\Accounts\Accounts',
-                 r'C:\Users\vrush\Downloads\Online_Shopping_For_Accessories-Project\Online_Shopping_For_Accessories-Project',
-                 r'C:\Users\vrush\Downloads\Online_Shopping_For_Accessories-Project\Online_Shopping_For_Accessories-Project\cart\cart'],
+        'DIRS': [r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\Accounts\Accounts',
+                 r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\templates',
+                 r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\Products\Products'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,7 +80,7 @@ WSGI_APPLICATION = 'Online_Shoping_For_Accessories.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'shop',
+        'NAME': 'sp+sepp',
         'USER' : 'root',
         'PASSWORD' : '',
         'HOST' : 'localhost',
