@@ -10,10 +10,10 @@ import requests
 
 
 
-men = Category.objects.filter(category_for="M")
-women = Category.objects.filter(category_for="W")
-girls = Category.objects.filter(category_for="G")
-boys = Category.objects.filter(category_for="B")
+Sunglasses = Category.objects.filter(category_for="SG")
+HandBags = Category.objects.filter(category_for="HB")
+Earrings = Category.objects.filter(category_for="E")
+Bracellets = Category.objects.filter(category_for="B")
 
 
 @login_required(login_url='/accounts/')
@@ -50,10 +50,10 @@ def category_page(request, cid):
     products = Product.objects.filter(category_id = cid)
     context = {
         'products': products,
-        'SG': sunglasses,
-        'HB': handbags,
-        'E': earrings,
-        'B': bracellets,
+        'SG': Sunglasses,
+        'HB': HandBags,
+        'E': Earrings,
+        'B': Bracellets,
         
     }
     return render(request, "category-page.html", context)
