@@ -31,9 +31,9 @@ def creation(request):
         info1.save()
        
         print("User Created")
-        return render(request, r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\templates\home.html')
+        return render(request, r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shopping_For_Accessories\templates\home.html')
     else:
-        return render(request, r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\Accounts\Accounts\registration.html')
+        return render(request, r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shopping_For_Accessories\Accounts\Accounts\registration.html')
    
 def login(request):
     if request.method=='POST':
@@ -42,7 +42,7 @@ def login(request):
         user=auth.authenticate(username=user_login,password=password_login)
         if user is not None:
             auth.login(request,user)
-            return render(request,r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\templates\home.html')
+            return render(request,r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shopping_For_Accessories\templates\home.html')
         else:
             return HttpResponse("<h1>Invalid User</h1>")
     else:

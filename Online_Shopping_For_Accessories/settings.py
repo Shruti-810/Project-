@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'Accounts.apps.AccountsConfig',
-    'Products.apps.ProductsConfig',
+    'Payment.apps.PaymentConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,14 +51,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Online_Shoping_For_Accessories.urls'
+ROOT_URLCONF = 'Online_Shopping_For_Accessories.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\Accounts\Accounts',
-                 r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\templates',
-                 r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shoping_For_Accessories\Products\Products'],
+        'DIRS': [r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shopping_For_Accessories\Accounts\Accounts',
+                 r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shopping_For_Accessories\templates',
+                 r'C:\Users\Arun\Desktop\Sem 4\SP\Django\Online_Shopping_For_Accessories\Payment\Payment'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Online_Shoping_For_Accessories.wsgi.application'
+WSGI_APPLICATION = 'Online_Shopping_For_Accessories.wsgi.application'
 
 
 # Database
