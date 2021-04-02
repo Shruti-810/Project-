@@ -1,42 +1,180 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
-from .models import Customer, Product, Cart, OrderPlaced
-class ProductView(View):
-    def get(self, request):
-        Sunglasses = Product.objects.filter(category='SG')
-        HandBags = Product.objects.filter(category='HB')
-        Earrings = Product.objects.filter(category='E')
-        Bracelets = Product.objects.filter(category='B')
-        return render(request, 'Accounts/home.html')
+from .models import *
+from django.views.generic import ListView
+from .models import Product,Cart,Category,Order,WishList
+from django.contrib.auth.decorators import login_required
+from django.utils.datastructures import MultiValueDictKeyError
+from django.contrib.auth.models import User
+import requests
+
+
+
+men = Category.objects.filter(category_for="M")
+women = Category.objects.filter(category_for="W")
+girls = Category.objects.filter(category_for="G")
+boys = Category.objects.filter(category_for="B")
+
+
+@login_required(login_url='/accounts/')
+def products(request):
+    products = Product.objects.all()
+    context = {
+        'items': products,
+        'men': men,
+        'women': women,
+        'girls': girls,
+        'boys': boys,
+    }
+    return render(request, "home.html", context)
+
+# class HomeView(ListView):
+#     model=Item
+#     template_name="home-page.html"
+
+@login_required(login_url='/accounts/')
 def product(request):
- return render(request, 'app/product.html')
+    id = int(request.POST['pid'])-1
+    product = Product.objects.get(id = str(id))
+    context = {
+        'product': product,
+        'SG': sunglasses,
+        'HB': handbags,
+        'E': earrings,
+        'B': bracellets,
+    }
+    return render(request, "product.html", context)
+    
+@login_required(login_url='/accounts/')
+def category_page(request, cid):
+    products = Product.objects.filter(category_id = cid)
+    context = {
+        'products': products,
+        'SG': sunglasses,
+        'HB': handbags,
+        'E': earrings,
+        'B': bracellets,
+        
+    }
+    return render(request, "category-page.html", context)
 
-def cart(request):
- return render(request, 'app/cart.html')
+def user_cart(request):
+    user = request.user
+    items = Cart.objects.filter(user = user)
+    length = len(items)
+    total = 0 
+    for item in items:
+        if(item.ordered == False):
+            total = total + item.price
+    context = {
+        'items': items, 
+        'length': length, 
+        'total': total,
+        'men': men,
+        'women': women,
+        'girls': girls,
+        'boys': boys,
+    }
+    return render(request, "cart.html", context)
 
-def buy_now(request):
- return render(request, 'app/buynow.html')
+def add_to_cart(request):
+    user = request.user
+    itm = Product.objects.get(id=request.POST.get('pid'))
+    item = Cart(user = user, product = itm, quantity = request.POST.get('qty'), size = request.POST.get('size'))
+    item.price = int(itm.price) * int(item.quantity)
+    item.save()
+    return redirect(user_cart)
 
-# def profile(request):
-#  return render(request, 'app/profile.html')
+def remove_from_cart(request):
+    cid = request.POST.get('cid')
+    cart_item = Cart.objects.get(id = cid)
+    cart_item.delete()
+    return redirect(user_cart)
 
-# def address(request):
-#  return render(request, 'app/address.html')
+def update_cart_item(request):
+    ciid = request.POST.get('ciid')
+    cart_item = Cart.objects.get(id = ciid)
+    cart_item.size = request.POST.get('size')
+    cart_item.quantity = request.POST.get('qty')
+    cart_item.price = int(cart_item.quantity) * int(cart_item.product.price)
+    cart_item.save()
+    return redirect(user_cart)
 
-# def orders(request):
-#  return render(request, 'app/orders.html')
+def place_order(request):
+    user = request.user
+    items = Cart.objects.filter(user = user)
+    length = len(items)
+    total = 0 
+    for item in items:
+        total = total + item.price
+    order = Order(user = user, total_amount = total, address = request.POST.get('address'), address2 = request.POST.get('address2'), country = request.POST.get('country'), state = request.POST.get('state'), pincode = request.POST.get('pincode'))
+    order.save()
+    for item in items:
+        order.products.add(item)
+        item.ordered = True
+    order.save()
+    return redirect(profile_page)
 
-# def change_password(request):
-#  return render(request, 'app/changepassword.html')
+def checkout(request):
+    user = request.user
+    items = Cart.objects.filter(user = user)
+    length = len(items)
+    total = 0 
+    for item in items:
+        if(item.ordered == False):
+            total = total + item.price
+    context = {
+        'user': user,
+        'items': items, 
+        'length': length, 
+        'total': total,
+        'men': men,
+        'women': women,
+        'girls': girls,
+        'boys': boys,
+    }
+    return render(request, "checkout-page.html", context)
 
-# def mobile(request):
-#  return render(request, 'app/earrings.html')
+def user_wishlist(request):
+    user = request.user
+    items = WishList.objects.filter(user = user)
+    length = len(items)
+    context = {
+        'items': items,
+        'length': length,
+        'men': men,
+        'women': women,
+        'girls': girls,
+        'boys': boys,
+    }
+    return render(request, "wishlist-page.html", context)
 
-# def login(request):
-#  return render(request, 'app/login.html')
+def add_to_wishlist(request):
+    user = request.user
+    product = Product.objects.get(id=request.POST.get('pid'))
+    item = WishList(user = user, product = product)
+    item.save()
+    return redirect(user_wishlist)
 
-# def customerregistration(request):
-#  return render(request, 'app/customerregistration.html')
+def remove_from_wishlist(request):
+    wid = request.POST.get('wid')
+    wishlist_item = WishList.objects.get(id = wid)
+    wishlist_item.delete()
+    return redirect(user_wishlist)
 
-# def checkout(request):
-#  return render(request, 'app/checkout.html')
+def profile_page(request):
+    orders = Order.objects.filter(user = request.user)
+    context = {
+        'orders': orders,
+        'men': men,
+        'women': women,
+        'girls': girls,
+        'boys': boys,
+    }
+    return render(request, "profile.html", context)
+
+def product_redirect(request):
+    post_data = {'pid': request.POST.get('pid')}
+    r = requests.post(request.build_absolute_uri(reverse('product_page')), data = post_data)
+    print(r.url)
+    return redirect(r)
